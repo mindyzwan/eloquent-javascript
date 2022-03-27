@@ -100,3 +100,38 @@ const recursiveNth = (list, wantedIndex, startIndex = 0) => {
 
 // console.log(nth(1, { value: 1, rest: { value: 2, rest: { value: 3, rest: {} } } }))
 // console.log(recursiveNth({ value: 1, rest: { value: 2, rest: { value: 3, rest: {} } } }, 2))
+
+// Deep Comparison
+const deepEqual = (object1, object2) => {
+  if (typeof object1 !== typeof object2) {
+    return false;
+  } else {
+    return isSameObject(object1, object2)
+  }
+}
+
+const isSameObject = (object1, object2) => {
+  if (object1 === object2) return true;
+  if (object1 === null || object2 === null) return false;
+
+  let object1Keys = Object.keys(object1);
+  let object2Keys = Object.keys(object2);
+
+  if (object1Keys.length !== object2Keys.length) return false;
+  for (const key of object1Keys) {
+    if (object1[key] !== object2[key]) return false;
+  }
+
+  return true;
+}
+
+const isSameArray = (array1, array2) => {
+}
+
+console.log(deepEqual([1, 2], ['1', '2']))
+console.log(deepEqual([1, 2], [1, 2]))
+console.log(deepEqual([1, 2], null))
+console.log(deepEqual(null, null))
+console.log(deepEqual({'test': '1'}, {'test': '1'}))
+console.log(deepEqual({'test': '1'}, {test: '1'}))
+console.log(deepEqual({'test': '1'}, {'test': '2'}))
