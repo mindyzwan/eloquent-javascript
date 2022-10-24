@@ -72,7 +72,7 @@ class Group {
       values = iterableObject.values();
     };
 
-    const group = new Group(); 
+    const group = new Group();
 
     values.forEach(value => {
       group.add(value);
@@ -93,3 +93,5 @@ for (const element of groupFromArray) {
 }
 
 Object.prototype.hasOwnProperty.call([3, 2, 1], 'length')
+
+// THINGS
